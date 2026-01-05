@@ -1,0 +1,26 @@
+# Core dependencies
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+
+# Machine Learning
+tensorflow>=2.14.0
+scikit-learn>=1.3.0
+
+# Post-Quantum Cryptography
+# Try pyoqs first, fallback to cryptography if unavailable
+pyoqs>=0.8.0; platform_system != "Windows" or python_version >= "3.10"
+cryptography>=41.0.0
+
+# Federated Learning
+# Using Flower as it's more Windows-friendly than PySyft
+flwr>=1.5.0
+
+# Utilities
+tqdm>=4.65.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Simulation
+simpy>=4.0.0
+
