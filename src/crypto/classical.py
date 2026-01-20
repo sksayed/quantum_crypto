@@ -4,7 +4,6 @@ For Class 0 devices (ultra-constrained, <10KB RAM)
 """
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-from cryptography.hazmat.backends import default_backend
 import os
 import time
 

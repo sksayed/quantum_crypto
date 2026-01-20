@@ -34,3 +34,10 @@ desktop.ini
 temp_model.h5
 *.log
 
+# Dependencies (embedded git repositories)
+liboqs/
+liboqs-python/
+
+# Stray files
+=41.0.0
+
