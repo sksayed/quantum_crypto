@@ -1,0 +1,18 @@
+Collecting cryptography
+  Using cached cryptography-46.0.3-cp38-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting cffi>=2.0.0 (from cryptography)
+  Using cached cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting typing-extensions>=4.13.2 (from cryptography)
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography)
+  Using cached pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Downloading cryptography-46.0.3-cp38-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 7.1 MB/s  0:00:00
+
+Using cached cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (216 kB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached pycparser-2.23-py3-none-any.whl (118 kB)
+Installing collected packages: typing-extensions, pycparser, cffi, cryptography
+
+
+Successfully installed cffi-2.0.0 cryptography-46.0.3 pycparser-2.23 typing-extensions-4.15.0
