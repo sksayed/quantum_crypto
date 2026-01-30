@@ -1,0 +1,17 @@
+# Requirements for CIC-IoMT-2024 Multi-class Intrusion Detection Training
+# Used by src/ml/train_iomt_gbdt.py
+
+# Core data processing
+numpy>=1.24.0
+pandas>=2.0.0
+pyarrow>=12.0.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+lightgbm>=4.0.0
+
+# Optional but recommended for better performance
+scipy>=1.10.0
+
+# System monitoring (optional but recommended for progress tracking)
+psutil>=5.9.0

@@ -5,6 +5,7 @@ __pycache__/
 *.so
 .Python
 venv/
+.venv/
 env/
 ENV/
 *.egg-info/
@@ -15,8 +16,11 @@ build/
 models/*.h5
 models/*.pkl
 models/*.tflite
+models/*.txt
+models/*.json
 data/*.npz
 data/*.csv
+data/*.parquet
 
 # IDE
 .vscode/
