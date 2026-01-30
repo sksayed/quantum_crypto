@@ -20,7 +20,8 @@ models/*.txt
 models/*.json
 data/*.npz
 data/*.csv
-data/*.parquet
+# Parquet files (do not push to origin)
+*.parquet
 
 # IDE
 .vscode/
