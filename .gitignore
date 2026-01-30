@@ -34,6 +34,7 @@ data/*.csv
 .DS_Store
 Thumbs.db
 desktop.ini
+*Zone.Identifier
 
 # Temporary files
 temp_model.h5
