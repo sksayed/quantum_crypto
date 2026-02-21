@@ -64,14 +64,15 @@ class DataLoaderPreprocessor:
 
     def __init__(
         self,
-        label_col: str,
-        drop_cols: list[str],
-        encode_categoricals: bool,
+        label_col: str = 'label',
+        drop_cols: list[str] = [],
+        encode_categoricals: bool = True,
     ) -> None:
         self.label_col = label_col
         self.drop_cols = drop_cols
         self.encode_categoricals = encode_categoricals
-        self.categorical_maps: dict[str, dict[str, int]] = {}
+        self.categorical_cols: list[str] = []
+        self.categorical_categories: dict[str, list[str]] = {}
 
     def load_parquet(self, data_path: Path, sample_size: int | None = None) -> pd.DataFrame:
         """Load parquet file(s) with progress tracking and optional sampling."""
@@ -141,24 +142,26 @@ class DataLoaderPreprocessor:
         
         return df
 
-    def _build_categorical_maps(self, df: pd.DataFrame) -> None:
-        for col in df.columns:
-            if df[col].dtype == "object":
-                categories = pd.Series(df[col].astype(str).unique()).sort_values()
-                self.categorical_maps[col] = {v: i for i, v in enumerate(categories)}
+    def _build_categorical_schema(self, df: pd.DataFrame) -> None:
+        self.categorical_cols = [c for c in df.columns if df[c].dtype == "object"]
+        self.categorical_categories = {}
+        for col in self.categorical_cols:
+            categories = pd.Series(df[col].astype(str).unique()).sort_values()
+            self.categorical_categories[col] = categories.tolist()
 
-    def _apply_categorical_maps(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _apply_categorical_schema(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.copy()
-        for col, mapping in self.categorical_maps.items():
-            if col in df.columns:
-                df[col] = (
-                    df[col].astype(str).map(mapping).fillna(-1).astype(int)
-                )
+        for col, categories in self.categorical_categories.items():
+            if col not in df.columns:
+                df[col] = pd.Categorical([None] * len(df), categories=categories)
+            else:
+                df[col] = df[col].astype(str)
+                df[col] = df[col].astype("category").cat.set_categories(categories)
         return df
 
     def prepare(
         self, df: pd.DataFrame, build_maps: bool = False
-    ) -> tuple[pd.DataFrame, pd.Series, list[str]]:
+    ) -> tuple[pd.DataFrame, pd.Series, list[str], list[str]]:
         print_status("Preprocessing data...")
         start_time = time.time()
         
@@ -178,11 +181,18 @@ class DataLoaderPreprocessor:
 
         if self.encode_categoricals:
             if build_maps:
-                print_status("Building categorical encoding maps...", level=1)
-                self._build_categorical_maps(df)
-                print_status(f"Encoded {len(self.categorical_maps)} categorical columns", level=2)
-            print_status("Applying categorical encoding...", level=1)
-            df = self._apply_categorical_maps(df)
+                print_status("Building categorical schema...", level=1)
+                self._build_categorical_schema(df)
+                print_status(f"Found {len(self.categorical_cols)} categorical columns", level=2)
+            print_status("Applying categorical schema...", level=1)
+            df = self._apply_categorical_schema(df)
+            non_numeric = [
+                c for c in df.columns
+                if df[c].dtype == "object" and c not in self.categorical_cols
+            ]
+            if non_numeric:
+                print_status(f"Dropping {len(non_numeric)} non-numeric columns: {non_numeric[:5]}...", level=1)
+                df = df.drop(columns=non_numeric)
         else:
             non_numeric = [c for c in df.columns if df[c].dtype == "object"]
             if non_numeric:
@@ -202,11 +212,12 @@ class DataLoaderPreprocessor:
         df = df.fillna(df.median(numeric_only=True))
         
         feature_cols = df.columns.tolist()
+        categorical_cols = [c for c in self.categorical_cols if c in feature_cols] if self.encode_categoricals else []
         elapsed = time.time() - start_time
         print_status(f"Preprocessing completed in {elapsed:.2f}s", level=1)
         print_status(f"Final feature matrix: {len(df):,} rows × {len(feature_cols)} features", level=1)
         
-        return df, y, feature_cols
+        return df, y, feature_cols, categorical_cols
 
 
 class ModelTrainer:
@@ -239,6 +250,7 @@ class ModelTrainer:
         num_classes: int,
         class_weight: str | None = None,
         early_stopping_rounds: int | None = None,
+        categorical_feature: list[str] | None = None,
     ):
         from lightgbm import LGBMClassifier
         from sklearn.utils.class_weight import compute_class_weight
@@ -311,6 +323,7 @@ class ModelTrainer:
             eval_set=[(X_val, y_val)],
             eval_metric="multi_logloss",
             callbacks=callbacks if callbacks else None,
+            categorical_feature=categorical_feature,
         )
         
         elapsed = time.time() - start_time
@@ -394,7 +407,7 @@ class TrainingPipeline:
             train_df = data_loader.load_parquet(Path(self.args.data_path), sample_size=self.args.sample_size)
 
         print_status("Preprocessing training data...")
-        X_train_df, y_train_raw, feature_cols = data_loader.prepare(
+        X_train_df, y_train_raw, feature_cols, categorical_cols = data_loader.prepare(
             train_df, build_maps=True
         )
         
@@ -406,7 +419,7 @@ class TrainingPipeline:
 
         if test_df is not None:
             print_status("Preprocessing test data...")
-            X_test_df, y_test_raw, _ = data_loader.prepare(test_df, build_maps=False)
+            X_test_df, y_test_raw, _, _ = data_loader.prepare(test_df, build_maps=False)
             
             # Align columns
             missing_cols = set(feature_cols) - set(X_test_df.columns)
@@ -506,6 +519,7 @@ class TrainingPipeline:
             num_classes=len(label_encoder.classes_),
             class_weight=self.args.class_weight,
             early_stopping_rounds=self.args.early_stopping_rounds,
+            categorical_feature=categorical_cols,
         )
 
         print_status("=" * 60)
