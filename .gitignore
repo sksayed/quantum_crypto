@@ -13,11 +13,11 @@ dist/
 build/
 
 # Models and Data
-models/*.h5
-models/*.pkl
-models/*.tflite
-models/*.txt
-models/*.json
+# Ignore only model binaries, keep metadata/reports tracked.
+models/**/*.cbm
+models/**/*.pkl
+models/**/*.h5
+models/**/*.tflite
 data/*.npz
 data/*.csv
 # Parquet files (do not push to origin)
