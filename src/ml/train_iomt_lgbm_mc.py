@@ -17,7 +17,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Multiclass LightGBM on IoMT data using sklearn-style preprocessing"
     )
-    parser.add_argument("--data-path", required=True, help="Parquet file or directory with IoMT data")
+    parser.add_argument(
+        "--data-path",
+        required=True,
+        help="Parquet file or directory with IoMT TRAIN data",
+    )
+    parser.add_argument(
+        "--test-path",
+        help="Optional external test parquet; if set, overrides internal test-size split",
+    )
     parser.add_argument("--label-col", required=True, help="Multiclass label column name")
     parser.add_argument("--output-dir", required=True, help="Directory to save artifacts")
     parser.add_argument("--test-size", type=float, default=0.2)
@@ -45,6 +53,7 @@ def main() -> None:
         sample_size=args.sample_size,
         base_outdir=str(outdir),
         model_name=model_name,
+        test_path=args.test_path,
     )
 
     num_classes = len(class_map)
