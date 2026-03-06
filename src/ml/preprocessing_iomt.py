@@ -15,6 +15,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
 from src.ml.train_iomt_gbdt_fs import DataLoaderPreprocessor, print_status
+from src.ml.train_iomt_two_layer import clean_labels
 
 
 # Column lists tuned for CIC_IoMT_2024_WiFi_MQTT_*.parquet.
@@ -262,7 +263,9 @@ def load_and_prepare_multiclass(
     if test_path is None:
         # Single dataset mode: internal train/test split.
         df = train_df
-        y_raw = df[label_col].astype(str).str.strip()
+        # For CIC-IoMT labels like ARP_Spoofing_train/_test collapse suffixes
+        # and Benign* consistently so train/test label spaces align.
+        y_raw = clean_labels(df[label_col])
         classes, y = np.unique(y_raw, return_inverse=True)
         class_map: Dict[int, str] = {int(i): cls for i, cls in enumerate(classes)}
 
@@ -304,8 +307,9 @@ def load_and_prepare_multiclass(
         if label_col not in test_df.columns:
             raise ValueError(f"Target column '{label_col}' not found in test dataset")
 
-        y_train_raw = train_df[label_col].astype(str).str.strip()
-        y_test_raw = test_df[label_col].astype(str).str.strip()
+        # Clean labels in both train and test (strip _train/_test, collapse Benign*)
+        y_train_raw = clean_labels(train_df[label_col])
+        y_test_raw = clean_labels(test_df[label_col])
 
         classes, y_train = np.unique(y_train_raw, return_inverse=True)
         class_map = {int(i): cls for i, cls in enumerate(classes)}
