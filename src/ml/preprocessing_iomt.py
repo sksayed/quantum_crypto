@@ -203,13 +203,24 @@ def load_and_prepare_binary(
         t0 = time.time()
         X_test = preprocessor.transform(X_test_df)
         elapsed = time.time() - t0
-        per_row = elapsed / max(1, len(X_test_df))
+        original_n = len(y_test)
+        # Drop test samples whose labels were unseen during training (mapped to -1)
+        keep_mask = y_test != -1
+        if not np.all(keep_mask):
+            removed = int((~keep_mask).sum())
+            print_status(
+                f"[preprocessing-binary] filtered {removed} test rows with unseen labels (-1)",
+                level=1,
+            )
+            X_test = X_test[keep_mask]
+            y_test = y_test[keep_mask]
+        per_row = elapsed / max(1, original_n)
         print_status(
             f"[preprocessing-binary] transform latency (external test): {per_row:.6f} s per row "
-            f"({elapsed:.3f}s for {len(X_test_df):,} rows)",
+            f"({elapsed:.3f}s for {original_n:,} rows)",
             level=1,
         )
-    print_status(f"[preprocessing-binary] transformed test: {X_test_df.shape[0]} rows", level=1)
+    print_status(f"[preprocessing-binary] transformed test: {X_test.shape[0]} rows", level=1)
 
     feature_names: List[str] = []
     if num_cols:
@@ -322,13 +333,23 @@ def load_and_prepare_multiclass(
         t0 = time.time()
         X_test = preprocessor.transform(X_test_df)
         elapsed = time.time() - t0
-        per_row = elapsed / max(1, len(X_test_df))
+        original_n = len(y_test)
+        keep_mask = y_test != -1
+        if not np.all(keep_mask):
+            removed = int((~keep_mask).sum())
+            print_status(
+                f"[preprocessing-mc] filtered {removed} test rows with unseen labels (-1)",
+                level=1,
+            )
+            X_test = X_test[keep_mask]
+            y_test = y_test[keep_mask]
+        per_row = elapsed / max(1, original_n)
         print_status(
             f"[preprocessing-mc] transform latency (external test): {per_row:.6f} s per row "
-            f"({elapsed:.3f}s for {len(X_test_df):,} rows)",
+            f"({elapsed:.3f}s for {original_n:,} rows)",
             level=1,
         )
-        print_status(f"[preprocessing-mc] transformed test: {X_test_df.shape[0]} rows", level=1)
+        print_status(f"[preprocessing-mc] transformed test: {X_test.shape[0]} rows", level=1)
 
     feature_names: List[str] = []
     if num_cols:
