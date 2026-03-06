@@ -15,7 +15,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
 from src.ml.train_iomt_gbdt_fs import DataLoaderPreprocessor, print_status
-from src.ml.train_iomt_two_layer import clean_labels
+from src.ml.train_iomt_two_layer import clean_labels, is_benign_label
 
 
 # Column lists tuned for CIC_IoMT_2024_WiFi_MQTT_*.parquet.
@@ -129,12 +129,14 @@ def load_and_prepare_binary(
     if label_col not in train_df.columns:
         raise ValueError(f"Target column '{label_col}' not found in dataset")
 
+    # For CIC-IoMT labels like ARP_Spoofing_train/_test, collapse suffixes and
+    # Benign* consistently, then derive a binary target: 0 = Benign, 1 = Attack.
     if test_path is None:
         # Single dataset mode: split into train/test internally.
         df = train_df
-        y_raw = df[label_col].astype(str).str.strip()
-        classes, y = np.unique(y_raw, return_inverse=True)
-        class_map: Dict[int, str] = {int(i): cls for i, cls in enumerate(classes)}
+        y_clean = clean_labels(df[label_col])
+        y = np.where(is_benign_label(y_clean), 0, 1)
+        class_map: Dict[int, str] = {0: "Benign", 1: "Attack"}
 
         X = df.drop(columns=[label_col])
 
@@ -175,15 +177,12 @@ def load_and_prepare_binary(
         if label_col not in test_df.columns:
             raise ValueError(f"Target column '{label_col}' not found in test dataset")
 
-        y_train_raw = train_df[label_col].astype(str).str.strip()
-        y_test_raw = test_df[label_col].astype(str).str.strip()
-
-        classes, y_train = np.unique(y_train_raw, return_inverse=True)
-        class_map = {int(i): cls for i, cls in enumerate(classes)}
-        class_to_index = {cls: i for i, cls in enumerate(classes)}
-
-        # Map test labels using training classes; unseen labels become -1
-        y_test = np.array([class_to_index.get(lbl, -1) for lbl in y_test_raw])
+        # Clean labels in both train and test, then map to binary targets
+        y_train_clean = clean_labels(train_df[label_col])
+        y_test_clean = clean_labels(test_df[label_col])
+        y_train = np.where(is_benign_label(y_train_clean), 0, 1)
+        y_test = np.where(is_benign_label(y_test_clean), 0, 1)
+        class_map = {0: "Benign", 1: "Attack"}
 
         X_train_df = train_df.drop(columns=[label_col])
         X_test_df = test_df.drop(columns=[label_col])
@@ -204,21 +203,10 @@ def load_and_prepare_binary(
         t0 = time.time()
         X_test = preprocessor.transform(X_test_df)
         elapsed = time.time() - t0
-        original_n = len(y_test)
-        # Drop test samples whose labels were unseen during training (mapped to -1)
-        keep_mask = y_test != -1
-        if not np.all(keep_mask):
-            removed = int((~keep_mask).sum())
-            print_status(
-                f"[preprocessing-binary] filtered {removed} test rows with unseen labels (-1)",
-                level=1,
-            )
-            X_test = X_test[keep_mask]
-            y_test = y_test[keep_mask]
-        per_row = elapsed / max(1, original_n)
+        per_row = elapsed / max(1, len(X_test_df))
         print_status(
             f"[preprocessing-binary] transform latency (external test): {per_row:.6f} s per row "
-            f"({elapsed:.3f}s for {original_n:,} rows)",
+            f"({elapsed:.3f}s for {len(X_test_df):,} rows)",
             level=1,
         )
     print_status(f"[preprocessing-binary] transformed test: {X_test.shape[0]} rows", level=1)
