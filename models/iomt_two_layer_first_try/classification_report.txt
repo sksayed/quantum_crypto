@@ -1,0 +1,63 @@
+                         precision    recall  f1-score   support
+
+                 Benign     0.9635    0.9998    0.9813     46068
+           ARP_Spoofing     0.7785    0.7170    0.7465      3558
+MQTT-DDoS-Connect_Flood     0.9994    0.9982    0.9988     42991
+MQTT-DDoS-Publish_Flood     0.9862    0.9935    0.9898      7208
+ MQTT-DoS-Connect_Flood     0.9931    0.9987    0.9959      3181
+ MQTT-DoS-Publish_Flood     0.9978    0.9966    0.9972     10576
+    MQTT-Malformed_Data     0.7439    0.6822    0.7117      1375
+          Recon-OS_Scan     0.6410    0.8730    0.7392      4133
+       Recon-Ping_Sweep     0.7674    0.7135    0.7395       185
+        Recon-Port_Scan     0.9886    0.8613    0.9206     21321
+          Recon-VulScan     0.5432    0.6864    0.6065       641
+      TCP_IP-DDoS-ICMP1     0.9229    0.9759    0.9487     69790
+      TCP_IP-DDoS-ICMP2     0.9436    0.8998    0.9212     78102
+      TCP_IP-DDoS-ICMP3     0.8076    0.9280    0.8636     37942
+      TCP_IP-DDoS-ICMP4     0.8989    0.5107    0.6513     38548
+      TCP_IP-DDoS-ICMP5     0.6532    0.9434    0.7719     39007
+      TCP_IP-DDoS-ICMP6     0.8027    0.7584    0.7799     38175
+      TCP_IP-DDoS-ICMP7     0.8601    0.8086    0.8335     37205
+      TCP_IP-DDoS-ICMP8     0.9997    0.9344    0.9660     38668
+        TCP_IP-DDoS-SYN     0.9263    0.7082    0.8027     34479
+       TCP_IP-DDoS-SYN1     0.9200    0.7437    0.8225     39878
+       TCP_IP-DDoS-SYN2     0.6718    0.7586    0.7125     40734
+       TCP_IP-DDoS-SYN3     0.6510    0.8280    0.7289     40405
+       TCP_IP-DDoS-SYN4     0.9977    0.9807    0.9891     39376
+        TCP_IP-DDoS-TCP     0.9991    0.8138    0.8970     36519
+       TCP_IP-DDoS-TCP1     0.8080    0.9878    0.8889     40462
+       TCP_IP-DDoS-TCP2     0.9913    0.7369    0.8454     39416
+       TCP_IP-DDoS-TCP3     0.8235    0.9975    0.9022     40815
+       TCP_IP-DDoS-TCP4     0.9935    0.9689    0.9810     40199
+       TCP_IP-DDoS-UDP1     0.9256    0.7782    0.8455     82365
+       TCP_IP-DDoS-UDP2     0.7570    0.9226    0.8317     72742
+       TCP_IP-DDoS-UDP3     0.9237    0.8919    0.9075     41321
+       TCP_IP-DDoS-UDP4     0.9989    0.7478    0.8553     41269
+       TCP_IP-DDoS-UDP5     0.8358    0.9586    0.8930     41102
+       TCP_IP-DDoS-UDP6     0.9375    0.8735    0.9044     40449
+       TCP_IP-DDoS-UDP7     0.8466    0.9802    0.9085     39537
+       TCP_IP-DDoS-UDP8     0.9662    0.9504    0.9582     40822
+        TCP_IP-DoS-ICMP     0.9885    0.7762    0.8696     19687
+       TCP_IP-DoS-ICMP1     0.6470    0.9486    0.7693     20901
+       TCP_IP-DoS-ICMP2     0.9515    0.5314    0.6820     19395
+       TCP_IP-DoS-ICMP3     0.7497    0.9982    0.8563     21737
+       TCP_IP-DoS-ICMP4     0.9648    0.7792    0.8621     21225
+         TCP_IP-DoS-SYN     0.9620    0.7953    0.8707     19719
+        TCP_IP-DoS-SYN1     0.8970    0.9645    0.9295     22286
+        TCP_IP-DoS-SYN2     0.8689    0.9422    0.9041     22329
+        TCP_IP-DoS-SYN3     0.7768    0.8489    0.8112     21638
+        TCP_IP-DoS-SYN4     0.9840    0.8920    0.9358     22127
+         TCP_IP-DoS-TCP     0.9867    0.9499    0.9679     16419
+        TCP_IP-DoS-TCP1     0.9773    0.9980    0.9876     19081
+        TCP_IP-DoS-TCP2     0.9994    0.9368    0.9671     19104
+        TCP_IP-DoS-TCP3     0.9112    0.9984    0.9528     19193
+        TCP_IP-DoS-TCP4     0.9563    0.9465    0.9514     18697
+         TCP_IP-DoS-UDP     0.9999    0.9738    0.9866     27511
+        TCP_IP-DoS-UDP1     0.7397    0.9947    0.8484     27402
+        TCP_IP-DoS-UDP2     0.9984    0.8405    0.9127     28099
+        TCP_IP-DoS-UDP3     0.9630    0.9984    0.9804     29229
+        TCP_IP-DoS-UDP4     0.9854    0.8042    0.8856     28660
+
+               accuracy                         0.8815   1755003
+              macro avg     0.8872    0.8741    0.8731   1755003
+           weighted avg     0.8959    0.8815    0.8813   1755003

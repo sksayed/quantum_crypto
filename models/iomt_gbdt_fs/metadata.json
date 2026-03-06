@@ -1,0 +1,388 @@
+{
+  "label_col": "label",
+  "feature_cols": [
+    "Rate",
+    "IAT",
+    "Header_Length",
+    "Tot size",
+    "Max",
+    "Min",
+    "Protocol Type",
+    "Srate",
+    "Duration",
+    "Tot sum",
+    "Number",
+    "AVG",
+    "Magnitue",
+    "Weight",
+    "IPv",
+    "LLC"
+  ],
+  "initial_feature_cols": [
+    "Header_Length",
+    "Protocol Type",
+    "Duration",
+    "Rate",
+    "Srate",
+    "IPv",
+    "LLC",
+    "Tot sum",
+    "Min",
+    "Max",
+    "AVG",
+    "Tot size",
+    "IAT",
+    "Number",
+    "Magnitue",
+    "Weight"
+  ],
+  "filtered_features": [
+    "Drate",
+    "fin_flag_number",
+    "syn_flag_number",
+    "rst_flag_number",
+    "psh_flag_number",
+    "ack_flag_number",
+    "ece_flag_number",
+    "cwr_flag_number",
+    "ack_count",
+    "syn_count",
+    "fin_count",
+    "rst_count",
+    "HTTP",
+    "HTTPS",
+    "DNS",
+    "Telnet",
+    "SMTP",
+    "SSH",
+    "IRC",
+    "TCP",
+    "UDP",
+    "DHCP",
+    "ARP",
+    "ICMP",
+    "IGMP",
+    "Std",
+    "Radius",
+    "Covariance",
+    "Variance"
+  ],
+  "feature_filter_threshold": 0.4,
+  "label_classes": [
+    "ARP_Spoofing_test",
+    "ARP_Spoofing_train",
+    "Benign_test",
+    "Benign_train",
+    "MQTT-DDoS-Connect_Flood_test",
+    "MQTT-DDoS-Connect_Flood_train",
+    "MQTT-DDoS-Publish_Flood_test",
+    "MQTT-DDoS-Publish_Flood_train",
+    "MQTT-DoS-Connect_Flood_test",
+    "MQTT-DoS-Connect_Flood_train",
+    "MQTT-DoS-Publish_Flood_test",
+    "MQTT-DoS-Publish_Flood_train",
+    "MQTT-Malformed_Data_test",
+    "MQTT-Malformed_Data_train",
+    "Recon-OS_Scan_test",
+    "Recon-OS_Scan_train",
+    "Recon-Ping_Sweep_test",
+    "Recon-Ping_Sweep_train",
+    "Recon-Port_Scan_test",
+    "Recon-Port_Scan_train",
+    "Recon-VulScan_test",
+    "Recon-VulScan_train",
+    "TCP_IP-DDoS-ICMP1_test",
+    "TCP_IP-DDoS-ICMP1_train",
+    "TCP_IP-DDoS-ICMP2_test",
+    "TCP_IP-DDoS-ICMP2_train",
+    "TCP_IP-DDoS-ICMP3_train",
+    "TCP_IP-DDoS-ICMP4_train",
+    "TCP_IP-DDoS-ICMP5_train",
+    "TCP_IP-DDoS-ICMP6_train",
+    "TCP_IP-DDoS-ICMP7_train",
+    "TCP_IP-DDoS-ICMP8_train",
+    "TCP_IP-DDoS-SYN1_train",
+    "TCP_IP-DDoS-SYN2_train",
+    "TCP_IP-DDoS-SYN3_train",
+    "TCP_IP-DDoS-SYN4_train",
+    "TCP_IP-DDoS-SYN_test",
+    "TCP_IP-DDoS-TCP1_train",
+    "TCP_IP-DDoS-TCP2_train",
+    "TCP_IP-DDoS-TCP3_train",
+    "TCP_IP-DDoS-TCP4_train",
+    "TCP_IP-DDoS-TCP_test",
+    "TCP_IP-DDoS-UDP1_test",
+    "TCP_IP-DDoS-UDP1_train",
+    "TCP_IP-DDoS-UDP2_test",
+    "TCP_IP-DDoS-UDP2_train",
+    "TCP_IP-DDoS-UDP3_train",
+    "TCP_IP-DDoS-UDP4_train",
+    "TCP_IP-DDoS-UDP5_train",
+    "TCP_IP-DDoS-UDP6_train",
+    "TCP_IP-DDoS-UDP7_train",
+    "TCP_IP-DDoS-UDP8_train",
+    "TCP_IP-DoS-ICMP1_train",
+    "TCP_IP-DoS-ICMP2_train",
+    "TCP_IP-DoS-ICMP3_train",
+    "TCP_IP-DoS-ICMP4_train",
+    "TCP_IP-DoS-ICMP_test",
+    "TCP_IP-DoS-SYN1_train",
+    "TCP_IP-DoS-SYN2_train",
+    "TCP_IP-DoS-SYN3_train",
+    "TCP_IP-DoS-SYN4_train",
+    "TCP_IP-DoS-SYN_test",
+    "TCP_IP-DoS-TCP1_train",
+    "TCP_IP-DoS-TCP2_train",
+    "TCP_IP-DoS-TCP3_train",
+    "TCP_IP-DoS-TCP4_train",
+    "TCP_IP-DoS-TCP_test",
+    "TCP_IP-DoS-UDP1_train",
+    "TCP_IP-DoS-UDP2_train",
+    "TCP_IP-DoS-UDP3_train",
+    "TCP_IP-DoS-UDP4_train",
+    "TCP_IP-DoS-UDP_test"
+  ],
+  "drop_cols": [],
+  "encode_categoricals": false,
+  "test_size": 0.2,
+  "val_size": 0.1,
+  "top_features": 20,
+  "feature_stats": {
+    "Header_Length": {
+      "null_rate": 0.0,
+      "zero_rate": 0.24907917515335876,
+      "unique_count": 898547
+    },
+    "Protocol Type": {
+      "null_rate": 0.0,
+      "zero_rate": 9.253547544601929e-05,
+      "unique_count": 1503
+    },
+    "Duration": {
+      "null_rate": 0.0,
+      "zero_rate": 9.253547544601929e-05,
+      "unique_count": 2776
+    },
+    "Rate": {
+      "null_rate": 0.0,
+      "zero_rate": 0.038292592842882396,
+      "unique_count": 4942168
+    },
+    "Srate": {
+      "null_rate": 0.0,
+      "zero_rate": 0.038292592842882396,
+      "unique_count": 4942168
+    },
+    "Drate": {
+      "null_rate": 0.0,
+      "zero_rate": 1.0,
+      "unique_count": 1
+    },
+    "fin_flag_number": {
+      "null_rate": 0.0,
+      "zero_rate": 0.971039017264134,
+      "unique_count": 250
+    },
+    "syn_flag_number": {
+      "null_rate": 0.0,
+      "zero_rate": 0.7896695993498813,
+      "unique_count": 582
+    },
+    "rst_flag_number": {
+      "null_rate": 0.0,
+      "zero_rate": 0.8817999471909614,
+      "unique_count": 560
+    },
+    "psh_flag_number": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9253964638001106,
+      "unique_count": 483
+    },
+    "ack_flag_number": {
+      "null_rate": 0.0,
+      "zero_rate": 0.8201763347814983,
+      "unique_count": 708
+    },
+    "ece_flag_number": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9999304844334703,
+      "unique_count": 8
+    },
+    "cwr_flag_number": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9999313961130314,
+      "unique_count": 7
+    },
+    "ack_count": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9686761717617968,
+      "unique_count": 600
+    },
+    "syn_count": {
+      "null_rate": 0.0,
+      "zero_rate": 0.7819778728532938,
+      "unique_count": 1044
+    },
+    "fin_count": {
+      "null_rate": 0.0,
+      "zero_rate": 0.8670517069319441,
+      "unique_count": 2680
+    },
+    "rst_count": {
+      "null_rate": 0.0,
+      "zero_rate": 0.7998033735106718,
+      "unique_count": 11401
+    },
+    "HTTP": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9981490625711894,
+      "unique_count": 34
+    },
+    "HTTPS": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9707585618391676,
+      "unique_count": 276
+    },
+    "DNS": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9974109440065787,
+      "unique_count": 64
+    },
+    "Telnet": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9994156134013704,
+      "unique_count": 6
+    },
+    "SMTP": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9994158413212607,
+      "unique_count": 7
+    },
+    "SSH": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9993772088998615,
+      "unique_count": 17
+    },
+    "IRC": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9994180065602182,
+      "unique_count": 7
+    },
+    "TCP": {
+      "null_rate": 0.0,
+      "zero_rate": 0.5667649723140011,
+      "unique_count": 277
+    },
+    "UDP": {
+      "null_rate": 0.0,
+      "zero_rate": 0.6423702164315882,
+      "unique_count": 290
+    },
+    "DHCP": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9999390314293551,
+      "unique_count": 34
+    },
+    "ARP": {
+      "null_rate": 0.0,
+      "zero_rate": 0.9943932846595213,
+      "unique_count": 85
+    },
+    "ICMP": {
+      "null_rate": 0.0,
+      "zero_rate": 0.7114799715966232,
+      "unique_count": 237
+    },
+    "IGMP": {
+      "null_rate": 0.0,
+      "zero_rate": 0.999965925976406,
+      "unique_count": 13
+    },
+    "IPv": {
+      "null_rate": 0.0,
+      "zero_rate": 9.253547544601929e-05,
+      "unique_count": 83
+    },
+    "LLC": {
+      "null_rate": 0.0,
+      "zero_rate": 9.253547544601929e-05,
+      "unique_count": 83
+    },
+    "Tot sum": {
+      "null_rate": 0.0,
+      "zero_rate": 0.0,
+      "unique_count": 6523
+    },
+    "Min": {
+      "null_rate": 0.0,
+      "zero_rate": 0.0,
+      "unique_count": 5145
+    },
+    "Max": {
+      "null_rate": 0.0,
+      "zero_rate": 0.0,
+      "unique_count": 5288
+    },
+    "AVG": {
+      "null_rate": 0.0,
+      "zero_rate": 0.0,
+      "unique_count": 5291
+    },
+    "Std": {
+      "null_rate": 0.0,
+      "zero_rate": 0.7665538501196523,
+      "unique_count": 13332
+    },
+    "Tot size": {
+      "null_rate": 0.0,
+      "zero_rate": 0.0,
+      "unique_count": 5276
+    },
+    "IAT": {
+      "null_rate": 0.0,
+      "zero_rate": 0.001263473911662581,
+      "unique_count": 79003
+    },
+    "Number": {
+      "null_rate": 0.0,
+      "zero_rate": 0.0,
+      "unique_count": 86
+    },
+    "Magnitue": {
+      "null_rate": 0.0,
+      "zero_rate": 0.0,
+      "unique_count": 2637
+    },
+    "Radius": {
+      "null_rate": 0.0,
+      "zero_rate": 0.7706297415171921,
+      "unique_count": 13058
+    },
+    "Covariance": {
+      "null_rate": 0.0,
+      "zero_rate": 0.7706297415171921,
+      "unique_count": 856565
+    },
+    "Variance": {
+      "null_rate": 0.0,
+      "zero_rate": 0.7706297415171921,
+      "unique_count": 853
+    },
+    "Weight": {
+      "null_rate": 0.0,
+      "zero_rate": 0.0,
+      "unique_count": 92
+    }
+  },
+  "hyperparams": {
+    "n_estimators": 300,
+    "max_depth": 8,
+    "num_leaves": 31,
+    "learning_rate": 0.05,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "min_data_in_leaf": 20,
+    "class_weight": "balanced",
+    "early_stopping_rounds": 50
+  }
+}

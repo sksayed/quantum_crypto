@@ -1,0 +1,78 @@
+                               precision    recall  f1-score   support
+
+            ARP_Spoofing_test     0.2850    0.8567    0.4278       349
+           ARP_Spoofing_train     0.7483    0.7940    0.7705      3209
+                  Benign_test     0.5733    0.7201    0.6384      7521
+                 Benign_train     0.9452    0.8299    0.8838     38547
+ MQTT-DDoS-Connect_Flood_test     0.9947    0.9658    0.9800      8383
+MQTT-DDoS-Connect_Flood_train     0.9916    0.9986    0.9951     34607
+ MQTT-DDoS-Publish_Flood_test     0.8678    0.9323    0.8989      1683
+MQTT-DDoS-Publish_Flood_train     0.9741    0.9513    0.9625      5525
+  MQTT-DoS-Connect_Flood_test     0.4037    0.9744    0.5709       626
+ MQTT-DoS-Connect_Flood_train     0.9886    0.6458    0.7812      2555
+  MQTT-DoS-Publish_Flood_test     0.5879    0.9906    0.7379      1701
+ MQTT-DoS-Publish_Flood_train     0.9959    0.8697    0.9285      8875
+     MQTT-Malformed_Data_test     0.3041    0.6848    0.4211       349
+    MQTT-Malformed_Data_train     0.5337    0.6784    0.5974      1026
+           Recon-OS_Scan_test     0.3882    0.8214    0.5272       767
+          Recon-OS_Scan_train     0.6049    0.7657    0.6758      3367
+        Recon-Ping_Sweep_test     0.2262    0.5135    0.3140        37
+       Recon-Ping_Sweep_train     0.2969    0.7703    0.4286       148
+         Recon-Port_Scan_test     0.3928    0.9070    0.5482      4525
+        Recon-Port_Scan_train     0.9590    0.4925    0.6508     16796
+           Recon-VulScan_test     0.1335    0.7874    0.2283       207
+          Recon-VulScan_train     0.4141    0.8253    0.5515       435
+       TCP_IP-DDoS-ICMP1_test     0.9495    0.9878    0.9683     30801
+      TCP_IP-DDoS-ICMP1_train     0.9454    0.9681    0.9566     38987
+       TCP_IP-DDoS-ICMP2_test     0.9659    0.8874    0.9250     39139
+      TCP_IP-DDoS-ICMP2_train     0.9190    0.9896    0.9530     38963
+      TCP_IP-DDoS-ICMP3_train     0.9573    0.8651    0.9088     37942
+      TCP_IP-DDoS-ICMP4_train     0.8710    0.9489    0.9083     38548
+      TCP_IP-DDoS-ICMP5_train     0.9668    0.8986    0.9315     39007
+      TCP_IP-DDoS-ICMP6_train     0.9579    0.9495    0.9537     38175
+      TCP_IP-DDoS-ICMP7_train     0.8972    0.9717    0.9330     37205
+      TCP_IP-DDoS-ICMP8_train     0.9951    0.9474    0.9707     38668
+       TCP_IP-DDoS-SYN1_train     0.9570    0.9955    0.9759     39878
+       TCP_IP-DDoS-SYN2_train     0.9556    0.9594    0.9575     40734
+       TCP_IP-DDoS-SYN3_train     0.9950    0.8363    0.9088     40405
+       TCP_IP-DDoS-SYN4_train     0.9953    0.9931    0.9942     39376
+         TCP_IP-DDoS-SYN_test     0.8777    0.9965    0.9333     34479
+       TCP_IP-DDoS-TCP1_train     0.8765    0.9102    0.8930     40462
+       TCP_IP-DDoS-TCP2_train     0.9058    0.8909    0.8983     39416
+       TCP_IP-DDoS-TCP3_train     0.9249    0.9529    0.9387     40815
+       TCP_IP-DDoS-TCP4_train     0.9993    0.9716    0.9852     40199
+         TCP_IP-DDoS-TCP_test     0.9479    0.9165    0.9320     36519
+        TCP_IP-DDoS-UDP1_test     0.9709    0.8948    0.9313     41131
+       TCP_IP-DDoS-UDP1_train     0.9405    0.9986    0.9687     41234
+        TCP_IP-DDoS-UDP2_test     0.9096    0.9640    0.9360     31283
+       TCP_IP-DDoS-UDP2_train     0.9977    0.8964    0.9444     41460
+       TCP_IP-DDoS-UDP3_train     0.9037    0.9989    0.9489     41321
+       TCP_IP-DDoS-UDP4_train     0.9989    0.7750    0.8728     41269
+       TCP_IP-DDoS-UDP5_train     0.8564    0.9572    0.9040     41102
+       TCP_IP-DDoS-UDP6_train     0.9436    0.8659    0.9031     40449
+       TCP_IP-DDoS-UDP7_train     0.8422    0.9881    0.9093     39537
+       TCP_IP-DDoS-UDP8_train     0.9633    0.9521    0.9577     40822
+       TCP_IP-DoS-ICMP1_train     0.9739    0.8330    0.8980     20901
+       TCP_IP-DoS-ICMP2_train     0.8691    0.9617    0.9130     19395
+       TCP_IP-DoS-ICMP3_train     0.9393    0.8587    0.8972     21737
+       TCP_IP-DoS-ICMP4_train     0.9125    0.9782    0.9442     21225
+         TCP_IP-DoS-ICMP_test     0.9153    0.9768    0.9451     19687
+        TCP_IP-DoS-SYN1_train     0.9419    0.9732    0.9573     22286
+        TCP_IP-DoS-SYN2_train     0.9496    0.9976    0.9730     22329
+        TCP_IP-DoS-SYN3_train     0.9972    0.8490    0.9171     21638
+        TCP_IP-DoS-SYN4_train     0.9991    0.9396    0.9685     22127
+          TCP_IP-DoS-SYN_test     0.8813    0.9986    0.9363     19719
+        TCP_IP-DoS-TCP1_train     0.9881    0.9977    0.9929     19081
+        TCP_IP-DoS-TCP2_train     0.9954    0.9594    0.9771     19104
+        TCP_IP-DoS-TCP3_train     0.9330    0.9956    0.9633     19193
+        TCP_IP-DoS-TCP4_train     0.9732    0.9511    0.9620     18697
+          TCP_IP-DoS-TCP_test     0.9780    0.9727    0.9753     16419
+        TCP_IP-DoS-UDP1_train     0.9980    0.8528    0.9197     27402
+        TCP_IP-DoS-UDP2_train     0.9312    0.9387    0.9349     28099
+        TCP_IP-DoS-UDP3_train     0.9244    0.9974    0.9595     29229
+        TCP_IP-DoS-UDP4_train     0.9307    0.9989    0.9636     28660
+          TCP_IP-DoS-UDP_test     0.9977    0.9743    0.9859     27511
+
+                     accuracy                         0.9321   1755003
+                    macro avg     0.8448    0.9015    0.8556   1755003
+                 weighted avg     0.9395    0.9321    0.9327   1755003

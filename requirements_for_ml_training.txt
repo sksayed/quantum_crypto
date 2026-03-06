@@ -13,5 +13,9 @@ lightgbm>=4.0.0
 # Optional but recommended for better performance
 scipy>=1.10.0
 
+# Visualization (optional)
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
 # System monitoring (optional but recommended for progress tracking)
 psutil>=5.9.0
