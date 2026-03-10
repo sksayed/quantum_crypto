@@ -23,6 +23,9 @@ data/*.csv
 # Parquet files (do not push to origin)
 *.parquet
 
+# Experiment outputs (often large)
+outputs/
+
 # IDE
 .vscode/
 .idea/
