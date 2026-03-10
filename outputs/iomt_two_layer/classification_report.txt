@@ -1,0 +1,57 @@
+                         precision    recall  f1-score   support
+
+                 Benign     0.9568    0.9990    0.9775     37607
+           ARP_Spoofing     0.6123    0.6439    0.6277      1744
+MQTT-DDoS-Connect_Flood     1.0000    0.9992    0.9996     41916
+MQTT-DDoS-Publish_Flood     0.9955    0.1043    0.1889      8416
+ MQTT-DoS-Connect_Flood     0.9827    1.0000    0.9913      3131
+ MQTT-DoS-Publish_Flood     0.5302    0.9999    0.6930      8505
+    MQTT-Malformed_Data     0.8437    0.4602    0.5956      1747
+          Recon-OS_Scan     0.6886    0.7658    0.7251      3834
+       Recon-Ping_Sweep     0.3931    0.8011    0.5274       186
+        Recon-Port_Scan     0.9908    0.9190    0.9535     22622
+          Recon-VulScan     0.3382    0.4284    0.3780      1034
+      TCP_IP-DDoS-ICMP1     0.3115    0.0001    0.0002    154007
+      TCP_IP-DDoS-ICMP2     0.4314    0.0001    0.0002    195692
+      TCP_IP-DDoS-ICMP3     0.0000    0.0000    0.0000         0
+      TCP_IP-DDoS-ICMP4     0.0000    0.0000    0.0000         0
+      TCP_IP-DDoS-ICMP5     0.0000    0.0000    0.0000         0
+      TCP_IP-DDoS-ICMP6     0.0000    0.0000    0.0000         0
+      TCP_IP-DDoS-ICMP7     0.0000    0.0000    0.0000         0
+      TCP_IP-DDoS-ICMP8     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-SYN1     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-SYN2     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-SYN3     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-SYN4     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-TCP1     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-TCP2     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-TCP3     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-TCP4     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-UDP1     0.1364    0.0000    0.0001    205654
+       TCP_IP-DDoS-UDP2     0.2442    0.0001    0.0003    156416
+       TCP_IP-DDoS-UDP3     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-UDP4     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-UDP5     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-UDP6     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-UDP7     0.0000    0.0000    0.0000         0
+       TCP_IP-DDoS-UDP8     0.0000    0.0000    0.0000         0
+       TCP_IP-DoS-ICMP1     0.0000    0.0000    0.0000         0
+       TCP_IP-DoS-ICMP2     0.0000    0.0000    0.0000         0
+       TCP_IP-DoS-ICMP3     0.0000    0.0000    0.0000         0
+       TCP_IP-DoS-ICMP4     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-SYN1     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-SYN2     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-SYN3     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-SYN4     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-TCP1     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-TCP2     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-TCP3     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-TCP4     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-UDP1     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-UDP2     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-UDP3     0.0000    0.0000    0.0000         0
+        TCP_IP-DoS-UDP4     0.0000    0.0000    0.0000         0
+
+              micro avg     0.0733    0.1404    0.0963    842511
+              macro avg     0.1854    0.1592    0.1502    842511
+           weighted avg     0.3804    0.1404    0.1381    842511

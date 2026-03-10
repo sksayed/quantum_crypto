@@ -1,0 +1,19 @@
+{
+  "accuracy": 0.9991376437105606,
+  "macro_f1": 0.9906663766696975,
+  "roc_auc": 0.9999582847643809,
+  "n_test_samples": 1614182,
+  "n_train_samples": 7160831,
+  "n_features": 45,
+  "class_map": {
+    "0": "Benign",
+    "1": "Attack"
+  },
+  "hyperparams": {
+    "num_leaves": 63,
+    "n_estimators": 500,
+    "learning_rate": 0.05,
+    "subsample": 0.9,
+    "colsample_bytree": 0.9
+  }
+}
